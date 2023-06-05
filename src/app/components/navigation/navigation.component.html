@@ -1,0 +1,19 @@
+<nav
+  class="h-[60px] px-5 flex justify-between items-center text-white bg-gray-500"
+>
+  <h1 class="font-bold">Моніторинг якості повітря</h1>
+
+  <span>
+    <a
+      routerLink="/"
+      class="mr-2"
+      routerLinkActive="font-bold"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Головна</a
+    >
+    <a routerLink="/tables" class="mr-2" routerLinkActive="font-bold"
+      >Таблиці</a
+    >
+    <a routerLink="/map" routerLinkActive="font-bold">Мапа</a>
+  </span>
+</nav>
