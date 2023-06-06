@@ -1,0 +1,55 @@
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full text-left border-collapse">
+          <thead class="border-b">
+            <tr>
+              <th
+                scope="col"
+                class="text-sm font-semibold text-gray-900 px-2 lg:px-6 py-4 border"
+              >
+                -
+              </th>
+              <th
+                scope="col"
+                class="text-sm font-semibold text-gray-900 px-2 lg:px-6 py-4 border"
+              >
+                Індекс якості повітря (ІЯП = AQI) Значення
+              </th>
+              <th
+                scope="col"
+                class="text-sm font-semibold text-gray-900 px-2 lg:px-6 py-4 border"
+              >
+                Рівні концерну охорони здоров'я
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let row of rows"
+              class="border-b"
+              [ngClass]="row.bgColorClassNames"
+            >
+              <td
+                class="text-sm text-gray-900 font-medium px-2 lg:px-6 py-4 border"
+              >
+                {{ row.values.index }}
+              </td>
+              <td
+                class="text-sm text-gray-900 font-light px-2 lg:px-6 py-4 border"
+              >
+                {{ row.values.indexDescr }}
+              </td>
+              <td
+                class="text-sm text-gray-900 font-light px-2 lg:px-6 py-4 border"
+              >
+                {{ row.values.descr }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

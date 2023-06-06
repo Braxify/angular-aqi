@@ -1,3 +1,4 @@
+import { airInfoTableValues } from './data';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './tables-page.component.html',
   styleUrls: ['./tables-page.component.scss'],
 })
-export class TablesPageComponent {}
+export class TablesPageComponent {
+  values = airInfoTableValues;
+}
