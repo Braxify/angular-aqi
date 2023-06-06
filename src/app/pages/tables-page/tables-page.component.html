@@ -1,2 +1,61 @@
-<h2 class="font-bold text-lg text-center mb-4">Про рівні якості повітря</h2>
+<div class="max-w-2xl mx-auto mb-4">
+  <label
+    for="default-search"
+    class="mb-2 text-sm font-medium text-gray-900 sr-only"
+  >
+    Пошук міста
+  </label>
+  <div class="relative">
+    <div
+      class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+    >
+      <img
+        class="w-5 h-5 text-gray-500 dark:text-gray-400"
+        src="assets/icons/search.svg"
+        alt=""
+      />
+    </div>
+    <input
+      type="search"
+      id="default-search"
+      [(ngModel)]="searchTerm"
+      (keyup)="onSearch()"
+      class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+      placeholder="Введіть назву міста"
+    />
+  </div>
+</div>
+<div class="search-results max-w-full">
+  <div
+    class="search-results__item"
+    *ngFor="let city of airQualityService.searchCityResult"
+  >
+    <span
+      class="hsearch-aqi font-semibold"
+      [ngClass]="{
+        'bg-green-300': +city.s.a >= 0 && +city.s.a <= 50,
+        'bg-yellow-300': +city.s.a >= 51 && +city.s.a <= 100,
+        'bg-orange-300': +city.s.a >= 101 && +city.s.a <= 150,
+        'bg-red-400': +city.s.a >= 151 && +city.s.a <= 200,
+        'bg-violet-500': +city.s.a >= 201 && +city.s.a <= 300,
+        'bg-rose-500': +city.s.a >= 300,
+        'bg-slate-400': !+city.s.a
+      }"
+    >
+      {{ city.s.a }}
+    </span>
+    <span class="searchResultFlag"
+      >Країна: <span style="color: #0086c8">{{ city.c }}</span
+      >;
+    </span>
+    <span style="color: #000">
+      <span *ngIf="city?.n?.[0]">{{ city.n[0] }};</span>
+      <span *ngIf="city?.n?.[1]">
+        {{ city.n[1] }};
+        <span *ngIf="city?.n?.[2]">{{ city.n[2] }}</span>
+      </span>
+    </span>
+  </div>
+</div>
+<h2 class="font-bold text-lg text-center mb-2">Рівні якості повітря</h2>
 <app-air-info-table [rows]="values" />

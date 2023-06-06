@@ -1,5 +1,7 @@
-import { airInfoTableValues } from './data';
 import { Component } from '@angular/core';
+
+import { airInfoTableValues } from './data';
+import { AirQualityService } from 'src/app/services/air-quality.service';
 
 @Component({
   selector: 'app-tables-page',
@@ -8,4 +10,18 @@ import { Component } from '@angular/core';
 })
 export class TablesPageComponent {
   values = airInfoTableValues;
+  searchTerm = '';
+
+  constructor(public airQualityService: AirQualityService) {}
+
+  onSearch(): void {
+    if (!this.searchTerm) this.airQualityService.searchCityResult = [];
+    if (this.searchTerm?.length) {
+      this.airQualityService.getDataByCity(this.searchTerm).subscribe({
+        next: (v) => console.log(v),
+        error: (e) => console.error(e),
+        complete: () => console.info('complete'),
+      });
+    }
+  }
 }

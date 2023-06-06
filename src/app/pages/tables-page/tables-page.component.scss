@@ -1,0 +1,22 @@
+.search-results {
+  text-align: left;
+  margin: 10px 0 30px;
+  border-radius: 2px;
+
+  &__item {
+    border: 1px solid black;
+    padding: 5px;
+    display: block;
+  }
+}
+
+.hsearch-aqi {
+  border-radius: 1px;
+  padding: 5px;
+  margin: 0 3px 0 0;
+  min-width: 30px;
+  text-align: center;
+  font-size: 12px;
+  display: inline-block;
+  border: 1px solid black;
+}
